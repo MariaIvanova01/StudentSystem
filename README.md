@@ -1,6 +1,6 @@
 # StudentSystem
 
-You are given a working project for a small Student System, but the code is very poorly organized. Break up the code logically into smaller functional units – methods and classes and don’t break the functionality.
+You are given a working project for a small Student System (the project is in StydentSystemBranch: https://github.com/MariaIvanova01/StudentSystem/tree/StudentSystemBranch), but the code is very poorly organized. Break up the code logically into smaller functional units – methods and classes and don’t break the functionality.
 The program supports the following commands:
 
 •	"Create {studentName} {studentAge} {studentGrade}" – creates a new student and adds them to the repository.

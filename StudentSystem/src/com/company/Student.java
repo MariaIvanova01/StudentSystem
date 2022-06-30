@@ -11,27 +11,21 @@ public class Student {
         this.grade = grade;
     }
 
-    public String getName() {
-        return this.name;
-    }
+    public String toPrintStudentsInfo() {
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        String toPrint = String.format("%s is %d years old.",name, age);
 
-    public int getAge() {
-        return this.age;
-    }
+        double studentGrade = grade;
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+        if (studentGrade >= 5.00) {
+            toPrint += " Excellent student.";
+        } else if (studentGrade < 5.00 && studentGrade >= 3.50) {
+            toPrint += " Average student.";
+        } else {
+            toPrint += " Very nice person.";
+        }
 
-    public double getGrade() {
-        return this.grade;
-    }
+        return toPrint;
 
-    public void setGrade(double grade) {
-        this.grade = grade;
     }
 }

@@ -1,61 +1,39 @@
 package com.company;
 
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class StudentSystem {
-    private Map<String, Student> repo;
+    private Map<String, Student> studentsInfo;
 
-    public StudentSystem()
-    {
-        this.repo = new HashMap<>();
+    public StudentSystem() {
+        this.studentsInfo = new HashMap<>();
     }
 
-    public Map<String, Student> getRepo() {
-        return this.repo;
+    public Map<String, Student> getStudentsInfo() {
+        return this.studentsInfo;
     }
 
-    public void ParseCommand(String[]args)
-    {
-//        Scanner scanner = new Scanner(System.in);
-//        String[] args = scanner.nextLine().split(" ");
+    public void ParseCommand(String[] commands) {
+        String commandName = commands[0];
+        String name = commands[1];
 
-        if (args[0].equals("Create"))
-        {
-            var name = args[1];
-            var age = Integer.parseInt(args[2]);
-            var grade =Double.parseDouble(args[3]);
-            if (!repo.containsKey(name))
-            {
-                var student = new Student(name, age, grade);
-                repo.put(name,student);
+        if (commandName.equals("Create")) {
+            int age = Integer.parseInt(commands[2]);
+            double grade = Double.parseDouble(commands[3]);
+            if (!studentsInfo.containsKey(name)) {
+                Student student = new Student(name, age, grade);
+                studentsInfo.put(name, student);
             }
-        }
-        else if (args[0].equals("Show"))
-        {
-            var name = args[1];
-            if (repo.containsKey(name))
-            {
-                var student = repo.get(name);
-                String view = String.format("%s is %s years old.",student.getName(),student.getAge());
+        } else if (commandName.equals("Show")) {
+            Student student = studentsInfo.get(name);
 
-                if (student.getGrade() >= 5.00)
-                {
-                    view += " Excellent student.";
-                }
-                else if (student.getGrade() < 5.00 && student.getGrade() >= 3.50)
-                {
-                    view += " Average student.";
-                }
-                else
-                {
-                    view += " Very nice person.";
-                }
-
-                System.out.println(view);
+            if (student != null) {
+                System.out.println(student.toPrintStudentsInfo());
             }
+
+        }else{
+            throw new IllegalArgumentException("Unknown command " + commandName);
         }
     }
 }
